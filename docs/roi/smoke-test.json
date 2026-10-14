@@ -1,0 +1,88 @@
+{
+  "Passed": 21,
+  "Failed": 0,
+  "Checks": [
+    "sample identifies three large shapes",
+    "current result can be exported",
+    "changed parameters invalidate export",
+    "threshold 255 removes all foreground",
+    "restoring threshold recovers contours",
+    "failed load preserves the previous successful result",
+    "measurement manifest exported",
+    "ROI changes invalidate export and permit processing",
+    "ROI detects only the rectangle and can be exported",
+    "ROI measurement coordinates are restored to the original image",
+    "valid ROI overlay follows the current parameters",
+    "non-integer ROI input disables detection and export",
+    "invalid ROI overlay is hidden without binding errors",
+    "invalid ROI processing preserves the last successful result",
+    "restoring ROI parameters restores export eligibility",
+    "out-of-bounds ROI disables detection and export",
+    "failed load preserves the current ROI result",
+    "disabling ROI recovers whole-image processing",
+    "whole-image ROI command fills the actual image dimensions",
+    "whole-image ROI detects all three objects",
+    "WPF binding error log is empty"
+  ],
+  "Result": [
+    {
+      "Id": 1,
+      "Shape": "\u56DB\u8FB9\u5F62",
+      "Area": 37011,
+      "Perimeter": 776,
+      "Circularity": 0.772355495416701,
+      "X": 100,
+      "Y": 185,
+      "Width": 220,
+      "Height": 170
+    },
+    {
+      "Id": 2,
+      "Shape": "\u8FD1\u5706\u5F62",
+      "Area": 22460,
+      "Perimeter": 562.8427076339722,
+      "Circularity": 0.8909339914883061,
+      "X": 395,
+      "Y": 190,
+      "Width": 171,
+      "Height": 171
+    },
+    {
+      "Id": 3,
+      "Shape": "\u4E09\u89D2\u5F62",
+      "Area": 18945,
+      "Perimeter": 656.9848430156708,
+      "Circularity": 0.5515612829170008,
+      "X": 640,
+      "Y": 175,
+      "Width": 211,
+      "Height": 181
+    }
+  ],
+  "RoiParameters": {
+    "Threshold": 128,
+    "MinimumArea": 500,
+    "Invert": false,
+    "Blur": false,
+    "Roi": {
+      "X": 80,
+      "Y": 160,
+      "Width": 260,
+      "Height": 220
+    }
+  },
+  "RoiResult": [
+    {
+      "Id": 1,
+      "Shape": "\u56DB\u8FB9\u5F62",
+      "Area": 37011,
+      "Perimeter": 776,
+      "Circularity": 0.772355495416701,
+      "X": 100,
+      "Y": 185,
+      "Width": 220,
+      "Height": 170
+    }
+  ],
+  "Rendering": "Actual WPF visual tree rendered offscreen; interactive dialogs require manual verification."
+}

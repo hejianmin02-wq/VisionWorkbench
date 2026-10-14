@@ -10,17 +10,19 @@ Directory.CreateDirectory(outputDirectory);
 var results = new List<object>();
 var passed = 0;
 var failed = 0;
-foreach (var method in typeof(ImageProcessorTests).GetMethods(BindingFlags.Public | BindingFlags.Instance)
+foreach (var testType in typeof(ImageProcessorTests).Assembly.GetTypes().Where(type => type.IsClass && !type.IsAbstract)
+    .OrderBy(type => type.FullName))
+foreach (var method in testType.GetMethods(BindingFlags.Public | BindingFlags.Instance)
     .Where(method => method.GetCustomAttribute<FactAttribute>() is not null).OrderBy(method => method.Name))
 {
     var rows = method.GetCustomAttributes<InlineDataAttribute>().SelectMany(attribute => attribute.GetData(method)).ToArray();
     if (rows.Length == 0) rows = [Array.Empty<object>()];
     foreach (var row in rows)
     {
-        var name = method.Name + (row.Length == 0 ? "" : "(" + string.Join(", ", row) + ")");
+        var name = testType.Name + "." + method.Name + (row.Length == 0 ? "" : "(" + string.Join(", ", row) + ")");
         try
         {
-            method.Invoke(new ImageProcessorTests(), row);
+            method.Invoke(Activator.CreateInstance(testType), row);
             passed++;
             results.Add(new { Case = name, Outcome = "Passed" });
             Console.WriteLine("PASS " + name);

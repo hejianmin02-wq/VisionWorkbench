@@ -23,17 +23,28 @@ public sealed class ImageProcessor
             throw new InvalidDataException("无法解码图片，请选择有效的 PNG、JPG 或 BMP 文件。");
         if ((long)source.Width * source.Height > MaximumPixels)
             throw new InvalidDataException("图片超过 1600 万像素，请先缩小图片。");
+        var region = parameters.Roi ?? new ImageRegion(0, 0, source.Width, source.Height);
+        region.ValidateWithin(source.Width, source.Height);
+        var regionBounds = new Rect(region.X, region.Y, region.Width, region.Height);
+        using var regionSource = new Mat(source, regionBounds);
         using var gray = new Mat();
-        using var binary = new Mat();
+        using var regionBinary = new Mat();
+        using var binary = new Mat(source.Size(), MatType.CV_8UC1, Scalar.Black);
+        using var binaryTarget = new Mat(binary, regionBounds);
         using var annotated = source.Clone();
-        Cv2.CvtColor(source, gray, ColorConversionCodes.BGR2GRAY);
+        Cv2.CvtColor(regionSource, gray, ColorConversionCodes.BGR2GRAY);
         if (parameters.Blur)
             Cv2.GaussianBlur(gray, gray, new Size(3, 3), 0);
         cancellationToken.ThrowIfCancellationRequested();
-        Cv2.Threshold(gray, binary, parameters.Threshold, 255,
+        Cv2.Threshold(gray, regionBinary, parameters.Threshold, 255,
             parameters.Invert ? ThresholdTypes.BinaryInv : ThresholdTypes.Binary);
-        Cv2.FindContours(binary, out Point[][] contours, out _, RetrievalModes.External,
-            ContourApproximationModes.ApproxSimple);
+        regionBinary.CopyTo(binaryTarget);
+        // OpenCV offsets every contour point, so bounds and annotations use original-image coordinates.
+        Cv2.FindContours(regionBinary, out Point[][] contours, out _, RetrievalModes.External,
+            ContourApproximationModes.ApproxSimple, new Point(region.X, region.Y));
+
+        if (parameters.Roi is not null)
+            Cv2.Rectangle(annotated, regionBounds, new Scalar(0, 190, 245), 2);
 
         var candidates = contours
             .Select(points => new { Points = points, Area = Cv2.ContourArea(points), Bounds = Cv2.BoundingRect(points) })

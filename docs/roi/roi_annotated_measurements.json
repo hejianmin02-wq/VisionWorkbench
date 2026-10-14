@@ -1,0 +1,48 @@
+{
+  "SchemaVersion": 2,
+  "Source": "synthetic-sample.png",
+  "CreatedAt": "2026-10-15T01:19:30.7360298+08:00",
+  "Width": 960,
+  "Height": 600,
+  "Parameters": {
+    "Threshold": 128,
+    "MinimumArea": 500,
+    "Invert": false,
+    "Blur": false,
+    "Roi": {
+      "X": 80,
+      "Y": 160,
+      "Width": 260,
+      "Height": 220
+    }
+  },
+  "Region": {
+    "X": 80,
+    "Y": 160,
+    "Width": 260,
+    "Height": 220
+  },
+  "CoordinateSpace": "original-image",
+  "MaskLayout": "full-size; pixels outside the processing region are zero",
+  "RoiBoundaryPolicy": "targets intersecting ROI edges are measured as clipped shapes",
+  "Contours": [
+    {
+      "Id": 1,
+      "Shape": "\u56DB\u8FB9\u5F62",
+      "Area": 37011,
+      "Perimeter": 776,
+      "Circularity": 0.772355495416701,
+      "X": 100,
+      "Y": 185,
+      "Width": 220,
+      "Height": 170
+    }
+  ],
+  "Units": {
+    "Area": "px^2",
+    "Perimeter": "px",
+    "Bounds": "px"
+  },
+  "ElapsedMilliseconds": 18.8383,
+  "TimingScope": "decode \u002B image processing \u002B PNG encoding; excludes file reading and WPF rendering"
+}

@@ -159,7 +159,7 @@ Release 构建成功，0 警告、0 错误。单进程验证入口执行了当�
 
 ## 9. 获取完整源码并运行
 
-完整源码、示例图片与验证记录已放到公开仓库：[VisionWorkbench](https://github.com/hejianmin02-wq/VisionWorkbench)。可以使用仓库的 **Code → Download ZIP** 下载，或直接下载 [main 分支源码 ZIP](https://github.com/hejianmin02-wq/VisionWorkbench/archive/refs/heads/main.zip)。
+完整源码、示例图片与验证记录已放到公开仓库：[VisionWorkbench](https://github.com/hejianmin02-wq/VisionWorkbench)。可以使用仓库的 **Code → Download ZIP** 下载，或直接下载 [本文 v0.1 源码 ZIP](https://github.com/hejianmin02-wq/VisionWorkbench/archive/57098b9c496c4d24584fd2281b8b1cc2eb90ee95.zip)。
 
 下载后解压，在 Windows x64 环境中，用 Visual Studio 打开 `VisionWorkbench.sln`，将 `VisionWorkbench.Desktop` 设为启动项目。需要兼容的 .NET SDK 与 .NET 8 Windows Desktop Runtime，首次构建需要还原 NuGet 依赖。也可以在解决方案目录执行：
 
@@ -168,7 +168,7 @@ dotnet build VisionWorkbench.sln --configuration Release
 dotnet run --project src/VisionWorkbench.Desktop/VisionWorkbench.Desktop.csproj --configuration Release
 ```
 
-建议依次阅读 [MainViewModel.cs](https://github.com/hejianmin02-wq/VisionWorkbench/blob/main/src/VisionWorkbench.Desktop/MainViewModel.cs)、[ImageProcessor.cs](https://github.com/hejianmin02-wq/VisionWorkbench/blob/main/src/VisionWorkbench.Core/ImageProcessor.cs) 和 [ProcessingModels.cs](https://github.com/hejianmin02-wq/VisionWorkbench/blob/main/src/VisionWorkbench.Core/ProcessingModels.cs)。[验证记录](https://github.com/hejianmin02-wq/VisionWorkbench/blob/main/docs/%E9%AA%8C%E8%AF%81%E8%AE%B0%E5%BD%95.md) 说明了本次实际检查范围及运行限制。
+建议依次阅读 [MainViewModel.cs](https://github.com/hejianmin02-wq/VisionWorkbench/blob/57098b9c496c4d24584fd2281b8b1cc2eb90ee95/src/VisionWorkbench.Desktop/MainViewModel.cs)、[ImageProcessor.cs](https://github.com/hejianmin02-wq/VisionWorkbench/blob/57098b9c496c4d24584fd2281b8b1cc2eb90ee95/src/VisionWorkbench.Core/ImageProcessor.cs) 和 [ProcessingModels.cs](https://github.com/hejianmin02-wq/VisionWorkbench/blob/57098b9c496c4d24584fd2281b8b1cc2eb90ee95/src/VisionWorkbench.Core/ProcessingModels.cs)。[验证记录](https://github.com/hejianmin02-wq/VisionWorkbench/blob/57098b9c496c4d24584fd2281b8b1cc2eb90ee95/docs/%E9%AA%8C%E8%AF%81%E8%AE%B0%E5%BD%95.md) 说明了本次实际检查范围及运行限制。
 
 仓库中的合成图可以直接复现。复杂场景部分提供本文截图；该照片原始文件没有包含在仓库中。
 

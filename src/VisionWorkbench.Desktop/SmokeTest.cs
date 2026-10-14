@@ -66,12 +66,59 @@ internal static class SmokeTest
             var encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(bitmap));
             using (var stream = File.Create(Path.Combine(directory, "workbench.png"))) encoder.Save(stream);
+
+            model.RoiEnabled = true;
+            model.RoiXText = "80";
+            model.RoiYText = "160";
+            model.RoiWidthText = "260";
+            model.RoiHeightText = "220";
+            Require(!model.CanSave && model.ProcessCommand.CanExecute(null), "ROI changes invalidate export and permit processing", checks);
+            await model.ProcessAsync();
+            Require(model.ContourCount == 1 && model.CanSave, "ROI detects only the rectangle and can be exported", checks);
+            Require(model.Measurements[0].X == 100 && model.Measurements[0].Y == 185,
+                "ROI measurement coordinates are restored to the original image", checks);
+            Require(model.RoiOverlayVisibility == Visibility.Visible && model.RoiOverlayX == 80 && model.RoiOverlayWidth == 260,
+                "valid ROI overlay follows the current parameters", checks);
+            var roiResult = model.CurrentResult ?? throw new InvalidOperationException("Missing ROI result.");
+            ResultExporter.Export(roiResult, Path.Combine(directory, "roi_annotated.png"), "synthetic-sample.png");
+            root.UpdateLayout();
+            await window.Dispatcher.InvokeAsync(() => { }, DispatcherPriority.Render);
+            var roiBitmap = new RenderTargetBitmap(1440, 860, 96, 96, PixelFormats.Pbgra32);
+            roiBitmap.Render(root);
+            var roiEncoder = new PngBitmapEncoder();
+            roiEncoder.Frames.Add(BitmapFrame.Create(roiBitmap));
+            using (var roiStream = File.Create(Path.Combine(directory, "workbench-roi.png"))) roiEncoder.Save(roiStream);
+
+            model.RoiWidthText = "not-an-integer";
+            Require(!model.CanSave && !model.ProcessCommand.CanExecute(null) && model.RoiValidationMessage.Length > 0,
+                "non-integer ROI input disables detection and export", checks);
+            Require(model.RoiOverlayVisibility == Visibility.Collapsed, "invalid ROI overlay is hidden without binding errors", checks);
+            await model.ProcessAsync();
+            Require(ReferenceEquals(model.CurrentResult, roiResult), "invalid ROI processing preserves the last successful result", checks);
+            model.RoiWidthText = "260";
+            Require(model.CanSave, "restoring ROI parameters restores export eligibility", checks);
+            model.RoiXText = "950";
+            Require(!model.ProcessCommand.CanExecute(null) && !model.CanSave, "out-of-bounds ROI disables detection and export", checks);
+            model.RoiXText = "80";
+            await model.LoadFileAsync(Path.Combine(directory, "does-not-exist.png"));
+            Require(model.Status.StartsWith("处理失败") && ReferenceEquals(model.CurrentResult, roiResult),
+                "failed load preserves the current ROI result", checks);
+            model.RoiEnabled = false;
+            await model.ProcessAsync();
+            Require(model.ContourCount == 3 && model.CurrentResult?.Parameters.Roi is null,
+                "disabling ROI recovers whole-image processing", checks);
+            model.WholeImageRoiCommand.Execute(null);
+            Require(model.RoiEnabled && model.RoiXText == "0" && model.RoiWidthText == "960" && model.RoiHeightText == "600",
+                "whole-image ROI command fills the actual image dimensions", checks);
+            await model.ProcessAsync();
+            Require(model.ContourCount == 3, "whole-image ROI detects all three objects", checks);
             bindingListener.Flush();
             File.WriteAllText(Path.Combine(directory, "binding-errors.txt"), bindingLog.ToString());
             Require(string.IsNullOrWhiteSpace(bindingLog.ToString()), "WPF binding error log is empty", checks);
             File.WriteAllText(Path.Combine(directory, "smoke-test.json"), JsonSerializer.Serialize(new
             {
                 Passed = checks.Count, Failed = 0, Checks = checks, Result = result.Measurements,
+                RoiParameters = roiResult.Parameters, RoiResult = roiResult.Measurements,
                 Rendering = "Actual WPF visual tree rendered offscreen; interactive dialogs require manual verification."
             }, new JsonSerializerOptions { WriteIndented = true }));
             window.Close();

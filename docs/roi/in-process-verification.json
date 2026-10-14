@@ -1,0 +1,151 @@
+{
+  "Mode": "in-process Fact/InlineData assertions; VSTest transport and adapter are not exercised",
+  "Passed": 36,
+  "Failed": 0,
+  "Cases": [
+    {
+      "Case": "ImageProcessorTests.BinaryThresholdIsStrictlyGreaterThanTheThreshold",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "ImageProcessorTests.BlankImageHasNoContoursEvenWithZeroMinimumArea",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "ImageProcessorTests.ExportIncludesResultParametersAndPixelUnits",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "ImageProcessorTests.HonorsAnAlreadyCanceledToken",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "ImageProcessorTests.InvertedModeFindsDarkTargetOnWhiteBackground",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "ImageProcessorTests.MinimumAreaUsesContourAreaRatherThanBoundingBoxArea",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "ImageProcessorTests.OptionalBlurStillFindsTheLargeSampleObjects",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "ImageProcessorTests.RejectsInvalidEncodedImage",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "ImageProcessorTests.RejectsInvalidMinimumArea(-1)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "ImageProcessorTests.RejectsInvalidMinimumArea(NaN)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "ImageProcessorTests.RejectsInvalidMinimumArea(\u221E)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "ImageProcessorTests.RejectsOutOfRangeThreshold(-1)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "ImageProcessorTests.RejectsOutOfRangeThreshold(256)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "ImageProcessorTests.ResultContainsDecodableImagesAndABinaryMask",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "ImageProcessorTests.SyntheticSampleHasThreeObjectsInLeftToRightOrder",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.BlurUsesOnlyPixelsInsideRoi",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.ExportRecordsRoiAndOriginalCoordinateSpace",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.InvalidAndOverflowingRoisAreRejected(-1, 0, 10, 10)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.InvalidAndOverflowingRoisAreRejected(0, -1, 10, 10)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.InvalidAndOverflowingRoisAreRejected(0, 0, 0, 10)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.InvalidAndOverflowingRoisAreRejected(0, 0, 10, 0)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.InvalidAndOverflowingRoisAreRejected(0, 0, -1, 10)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.InvalidAndOverflowingRoisAreRejected(0, 0, 10, -1)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.InvalidAndOverflowingRoisAreRejected(960, 0, 1, 1)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.InvalidAndOverflowingRoisAreRejected(0, 600, 1, 1)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.InvalidAndOverflowingRoisAreRejected(950, 0, 11, 10)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.InvalidAndOverflowingRoisAreRejected(0, 590, 10, 11)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.InvalidAndOverflowingRoisAreRejected(2147483647, 0, 2147483647, 1)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.InvalidAndOverflowingRoisAreRejected(0, 2147483647, 1, 2147483647)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.InvertedRoiDoesNotTurnOutsidePixelsIntoForeground",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.OnePixelRoiIsValidButHasNoPositiveAreaContour",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.RoiCanTouchRightAndBottomImageEdges",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.RoiSelectsOneObjectAndRestoresOriginalCoordinates",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.RoiWithNoForegroundReturnsAnEmptyFullSizeMask",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.TargetCrossingRoiEdgeIsMeasuredAsAClippedShape",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RoiTests.WholeImageRoiPreservesMeasurementsMaskAndOriginal",
+      "Outcome": "Passed"
+    }
+  ]
+}

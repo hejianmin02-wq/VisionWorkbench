@@ -13,12 +13,16 @@ public static class ResultExporter
         File.WriteAllBytes(basePath + "_mask.png", result.BinaryPng);
         var manifest = new
         {
-            SchemaVersion = 1,
+            SchemaVersion = 2,
             Source = Path.GetFileName(sourceName),
             CreatedAt = DateTimeOffset.Now,
             result.Width,
             result.Height,
             Parameters = result.Parameters,
+            Region = result.ProcessingRegion,
+            CoordinateSpace = "original-image",
+            MaskLayout = "full-size; pixels outside the processing region are zero",
+            RoiBoundaryPolicy = "targets intersecting ROI edges are measured as clipped shapes",
             Contours = result.Measurements,
             Units = new { Area = "px^2", Perimeter = "px", Bounds = "px" },
             result.ElapsedMilliseconds,
