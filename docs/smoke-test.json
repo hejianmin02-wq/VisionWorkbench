@@ -1,0 +1,50 @@
+{
+  "Passed": 8,
+  "Failed": 0,
+  "Checks": [
+    "sample identifies three large shapes",
+    "current result can be exported",
+    "changed parameters invalidate export",
+    "threshold 255 removes all foreground",
+    "restoring threshold recovers contours",
+    "failed load preserves the previous successful result",
+    "measurement manifest exported",
+    "WPF binding error log is empty"
+  ],
+  "Result": [
+    {
+      "Id": 1,
+      "Shape": "\u56DB\u8FB9\u5F62",
+      "Area": 37011,
+      "Perimeter": 776,
+      "Circularity": 0.772355495416701,
+      "X": 100,
+      "Y": 185,
+      "Width": 220,
+      "Height": 170
+    },
+    {
+      "Id": 2,
+      "Shape": "\u8FD1\u5706\u5F62",
+      "Area": 22460,
+      "Perimeter": 562.8427076339722,
+      "Circularity": 0.8909339914883061,
+      "X": 395,
+      "Y": 190,
+      "Width": 171,
+      "Height": 171
+    },
+    {
+      "Id": 3,
+      "Shape": "\u4E09\u89D2\u5F62",
+      "Area": 18945,
+      "Perimeter": 656.9848430156708,
+      "Circularity": 0.5515612829170008,
+      "X": 640,
+      "Y": 175,
+      "Width": 211,
+      "Height": 181
+    }
+  ],
+  "Rendering": "Actual WPF visual tree rendered offscreen; interactive dialogs require manual verification."
+}

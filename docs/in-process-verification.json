@@ -1,0 +1,67 @@
+{
+  "Mode": "in-process Fact/InlineData assertions; VSTest transport and adapter are not exercised",
+  "Passed": 15,
+  "Failed": 0,
+  "Cases": [
+    {
+      "Case": "BinaryThresholdIsStrictlyGreaterThanTheThreshold",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "BlankImageHasNoContoursEvenWithZeroMinimumArea",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "ExportIncludesResultParametersAndPixelUnits",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "HonorsAnAlreadyCanceledToken",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "InvertedModeFindsDarkTargetOnWhiteBackground",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "MinimumAreaUsesContourAreaRatherThanBoundingBoxArea",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "OptionalBlurStillFindsTheLargeSampleObjects",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RejectsInvalidEncodedImage",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RejectsInvalidMinimumArea(-1)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RejectsInvalidMinimumArea(NaN)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RejectsInvalidMinimumArea(\u221E)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RejectsOutOfRangeThreshold(-1)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "RejectsOutOfRangeThreshold(256)",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "ResultContainsDecodableImagesAndABinaryMask",
+      "Outcome": "Passed"
+    },
+    {
+      "Case": "SyntheticSampleHasThreeObjectsInLeftToRightOrder",
+      "Outcome": "Passed"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "SchemaVersion": 1,
+  "Source": "synthetic-sample.png",
+  "CreatedAt": "2026-10-14T15:16:49.2047792+08:00",
+  "Width": 960,
+  "Height": 600,
+  "Parameters": {
+    "Threshold": 128,
+    "MinimumArea": 500,
+    "Invert": false,
+    "Blur": false
+  },
+  "Contours": [
+    {
+      "Id": 1,
+      "Shape": "\u56DB\u8FB9\u5F62",
+      "Area": 37011,
+      "Perimeter": 776,
+      "Circularity": 0.772355495416701,
+      "X": 100,
+      "Y": 185,
+      "Width": 220,
+      "Height": 170
+    },
+    {
+      "Id": 2,
+      "Shape": "\u8FD1\u5706\u5F62",
+      "Area": 22460,
+      "Perimeter": 562.8427076339722,
+      "Circularity": 0.8909339914883061,
+      "X": 395,
+      "Y": 190,
+      "Width": 171,
+      "Height": 171
+    },
+    {
+      "Id": 3,
+      "Shape": "\u4E09\u89D2\u5F62",
+      "Area": 18945,
+      "Perimeter": 656.9848430156708,
+      "Circularity": 0.5515612829170008,
+      "X": 640,
+      "Y": 175,
+      "Width": 211,
+      "Height": 181
+    }
+  ],
+  "Units": {
+    "Area": "px^2",
+    "Perimeter": "px",
+    "Bounds": "px"
+  },
+  "ElapsedMilliseconds": 12.5622,
+  "TimingScope": "decode \u002B image processing \u002B PNG encoding; excludes file reading and WPF rendering"
+}
